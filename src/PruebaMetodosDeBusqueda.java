@@ -19,7 +19,25 @@ class MetodosDeBusqueda{
 		     if(existe==true) {
 				System.out.println("El numero no existe");
 		     }
-	}
+	}//BusquedaSecuencial
+	public static int busquedaBinaria(int numeros[],int elemento) {
+		int centro,primero,valorCentro,ultimo;
+		primero=0;
+		ultimo=numeros.length-1;
+		while(primero <=ultimo) {
+			centro=(primero+ultimo)/2;
+			valorCentro=numeros[centro];
+			System.out.println("Comparando "+elemento+" con "+numeros[centro]);
+			if (elemento==valorCentro) {
+				return centro;
+			}else if(elemento<valorCentro) {
+				ultimo=centro-1;
+			}else {
+				primero=centro+1;
+			}
+		}
+		return -1;
+	}//BusquedaBinaria
 }
 
 public class PruebaMetodosDeBusqueda {
