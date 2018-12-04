@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -99,7 +100,7 @@ class HashCero{
 		
 		while (arreglo[indiceArreglo]!=-1) {
 			if(arreglo[indiceArreglo]==elemento) {
-				System.out.println(" el elemento "+elemento
+				System.out.println("El elemento "+elemento
 						+" fue encontrado en la posicion "+indiceArreglo);
 				return arreglo[indiceArreglo];
 			}
@@ -129,7 +130,8 @@ public class PruebaMetodosDeBusqueda {
 			System.out.println("________MENU________");
 			System.out.println("1. Busqueda Secuencial");
 			System.out.println("2. Busqueda Binaria");
-			System.out.println("3. Salir");
+			System.out.println("3. Funciones Hash");
+			System.out.println("4. Salir");
 			menu=entrada.nextByte();
 			switch(menu) {
 			case 1: 
@@ -149,9 +151,25 @@ public class PruebaMetodosDeBusqueda {
 					System.out.println("No se encontro el elemento!");
 				}
 				break;
+			case 3:
+				System.out.println(" ~~~~~~~~~Funciones Hash~~~~~~~~~");
+				HashCero hash=new HashCero();
+				hash.HasCero(100);
+				hash.funcionHash(arregloDesordenado.clone(), hash.arreglo);
+				System.out.println("Ingrese el numero a buscar:");
+				elemento=entrada.nextInt();
+				int buscado =hash.buscarClave(elemento);
+				if(buscado==-1) {
+					System.out.println("El elemento "+elemento+" no se encuentra en la tabla");
+				}
+				break;
+			case 4:
+				break;
+			default:
+				System.out.println("Opcion incorrecta!");
 			}
 			
-		}while(menu!=3);
+		}while(menu!=4);
 
 	}
 
