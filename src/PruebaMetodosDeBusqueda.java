@@ -67,6 +67,53 @@ class MetodosDeBusqueda{
 	}//BusquedaBinaria
 	
 }//Class metodos de busqueda
+class HashCero{
+	int []arreglo;
+	int tamanio,contador;
+	
+	public void HasCero(int tam) {
+		tamanio=tam;
+		arreglo=new int [tam];
+		Arrays.fill(arreglo, -1);
+	}
+	public void funcionHash(int [] cadenaArreglo,int []arreglo) {
+		int i;
+		for (i=0; i<cadenaArreglo.length;i++) {
+			int elemento =cadenaArreglo[i];
+			int indiceArreglo=elemento%7;
+		//	System.out.println("el indice es "+indiceArreglo+" para el elemento "+elemento);
+			//traslado de colisiones
+		    while(arreglo[indiceArreglo]!=-1) {
+		    	indiceArreglo++;
+			    //System.out.println(" ocurrio una colision para el indice "+(indiceArreglo-1)+
+					//"cambiar al indice "+indiceArreglo);
+			    indiceArreglo%=tamanio;
+		    }
+		    arreglo[indiceArreglo]=elemento;
+		}
+	}//funcionHash
+	
+	public int buscarClave(int elemento) {
+		int indiceArreglo=elemento%7;
+		int contador=0;
+		
+		while (arreglo[indiceArreglo]!=-1) {
+			if(arreglo[indiceArreglo]==elemento) {
+				System.out.println(" el elemento "+elemento
+						+" fue encontrado en la posicion "+indiceArreglo);
+				return arreglo[indiceArreglo];
+			}
+			indiceArreglo++;
+			indiceArreglo%=tamanio;
+			contador++;
+			if(contador>7) {
+				break;
+			}
+		}
+		return -1;
+	}//Buscar clave
+	
+}//class HashCero
 
 public class PruebaMetodosDeBusqueda {
 
